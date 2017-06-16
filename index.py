@@ -1,5 +1,5 @@
-from modules import utils
+from modules import helpers
 
 
-result = utils.run_command(['ls -la'])
-print (result)
+# Getting main data
+name = helpers.ask_question('Enter your project name: ')
