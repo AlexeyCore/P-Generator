@@ -14,8 +14,15 @@ def run_command(commands=['']):
             i += 1
         print (commands_line)
         time.sleep(5)
-        output = sp.run(commands_line, stdout=sp.PIPE, shell=True)
+        output = sp.Popen(commands_line, stdout=sp.PIPE, stderr=sp.PIPE, shell=True)
+        output.wait()
         return output.stdout.decode('utf-8')
 
-def ask_question(question=''):
-    return input(question)
+
+def ask_question(question='', options=[]):
+    if not options:
+        return input('%s: ' % question)
+    answer = input('%s (%s): ' % (question, '/'.join(options)))
+    if answer in options:
+        return answer
+    return ask_question(question, options)
