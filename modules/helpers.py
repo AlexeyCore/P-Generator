@@ -1,5 +1,4 @@
 import subprocess as sp
-import time
 
 
 def run_command(commands=['']):
@@ -12,17 +11,18 @@ def run_command(commands=['']):
             else:
                 commands_line += line
             i += 1
-        print (commands_line)
-        time.sleep(5)
-        output = sp.Popen(commands_line, stdout=sp.PIPE, stderr=sp.PIPE, shell=True)
-        output.wait()
-        return output.stdout.decode('utf-8')
+        try:
+            output = sp.Popen(commands_line, stdout=sp.PIPE, stderr=sp.PIPE, shell=True)
+            output.wait()
+            return output.communicate()[0].decode('utf-8')
+        except:
+            return None
 
 
 def ask_question(question='', options=[]):
     if not options:
-        return input('%s: ' % question)
-    answer = input('%s (%s): ' % (question, '/'.join(options)))
+        return input('\033[94m%s: \033[0m' % question)
+    answer = input('\033[94m%s (%s): \033[0m' % (question, '/'.join(options)))
     if answer in options:
         return answer
     return ask_question(question, options)

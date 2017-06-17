@@ -1,21 +1,12 @@
-import os
-from git import Repo
-from modules import helpers
-from modules import constants
-
-
-def init_rn(name=''):
-    helpers.run_command(['react-native init %s' % name])
-    return
-
+from modules import rn
 
 
 def clone_template(answers={}):
     tm = answers['template']
     if tm == 'rn':
-        init_rn(answers['name'])
+        rn.init(answers['name'])
     elif tm == 'node':
-        print('Coming soon')
+        pass
 
     # if answers[]
     # repository_url = constants.templates[answers['template']]

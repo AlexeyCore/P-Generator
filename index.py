@@ -9,10 +9,12 @@ answers = {
 
 # Check template
 if answers['template'] == 'node':
-    print ('Coming soon')
+    print('Coming soon')
     sys.exit()
 
 answers['name'] = helpers.ask_question('Enter your project name')
-print('Downloading %s template. Please wait...' % answers['template'])
+print('\033[92m-------------------------------------------')
+print('%s template\033[0m\n' % answers['template'])
+
 
 templates.clone_template(answers)
