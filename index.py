@@ -1,18 +1,10 @@
-import sys
-from modules import helpers, templates
+from kivy.app import App
+from kivy.uix.button import Button
 
 
-# Getting main data
-answers = {
-    'template': helpers.ask_question('Select generator template', ['rn', 'node'])
-}
+class TestApp(App):
 
-# Check template
-if answers['template'] == 'node':
-    print ('Coming soon')
-    sys.exit()
+    def build(self):
+        return Button(text='Hello World')
 
-answers['name'] = helpers.ask_question('Enter your project name')
-print('Downloading %s template. Please wait...' % answers['template'])
-
-templates.clone_template(answers)
+TestApp().run()
