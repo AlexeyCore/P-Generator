@@ -1,14 +1,13 @@
-from modules import rn
+from modules import constants, git
+from modules.state import g_state
 
 
-def clone_template(answers={}):
-    tm = answers['template']
-    if tm == 'rn':
-        rn.init(answers['name'])
-    elif tm == 'node':
-        pass
-
-    # if answers[]
-    # repository_url = constants.templates[answers['template']]
-    # cloned_repo = Repo.clone_from(repository_url, '%s/%s' % (os.getcwd(), answers['name']))
-    # print (cloned_repo)
+def clone_template():
+    selected_tm = g_state.get('template')
+    tm = constants.templates[selected_tm]
+    if not tm:
+        print('Sorry, template "%s" not found :(' % selected_tm)
+    else:
+        print('Cloning template repository...')
+        coned = git.clone(tm['git_url'], selected_tm)
+        print(coned)

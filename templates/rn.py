@@ -1,5 +1,5 @@
 import sys
-from modules import helpers
+from modules import helpers, structure
 
 
 def questions():
@@ -15,13 +15,20 @@ def questions():
     }
 
 
+def complete(name=''):
+    print('Complete')
+
+
+def format_template(answers={}):
+    print('Project restructuring...')
+    structure.format(rn_structure)
+
+
 def init(name=''):
     answers = questions()
-    print(answers)
     print('Initializing "%s" project...' % name)
     result = helpers.run_command(['react-native init %s' % name])
     if not result:
         print('Error initializing react-native project :(')
         sys.exit()
-    print('Yeeees')
-
+    format_template(answers, name)
