@@ -8,8 +8,9 @@ class State:
     }
 
     def __init__(self):
-        modules_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-        self.state['projects_dir'] = os.path.abspath(os.path.join(modules_dir, os.pardir))
+        generator_dir = os.path.dirname(os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))))
+        self.state['projects_dir'] = os.path.dirname(generator_dir)
+        print(self.state['projects_dir'])
 
     def get(self, getting_value=''):
         return self.state[getting_value]
