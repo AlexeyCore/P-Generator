@@ -1,12 +1,12 @@
-import os, sys
+import os, sys, inspect
 from modules import helpers, templates
 from modules.state import g_state
 
 
 # Check current directory
-current_path = g_state.get('projects_dir')
-current_dir = os.path.basename(current_path)
-if current_dir != 'P-Generator':
+project_dir = g_state.get('projects_dir')
+current_dir = os.getcwd()
+if current_dir != project_dir:
     print('\033[91mPlease, run generator from "P-Generator" directory\033[0m')
     sys.exit()
 
