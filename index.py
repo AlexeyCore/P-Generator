@@ -4,7 +4,7 @@ from modules.state import g_state
 
 
 # Check current directory
-project_dir = g_state.get('projects_dir')
+project_dir = g_state.get('projects_path')
 current_dir = os.getcwd()
 if current_dir != project_dir:
     print('\033[91mPlease, run generator from your project directory.')

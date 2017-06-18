@@ -1,4 +1,7 @@
+import shutil
 import subprocess as sp
+from modules.state import g_state
+from modules import structure
 
 
 def run_command(commands=['']):
@@ -26,3 +29,20 @@ def ask_question(question='', options=[]):
     if answer in options:
         return answer
     return ask_question(question, options)
+
+
+def run_py(script_path=''):
+    run_command(['python3 %s' % script_path])
+
+
+def init_template_scripts(template_name=''):
+    run_py('%s/%s/%s/index.py' % (g_state.get('generator_dir'), g_state.get('templates_dir'), template_name))
+
+
+def remove_template(template_name=''):
+    structure.remove_files(['%s/%s/%s/%s' % (
+        g_state.get('projects_path'),
+        g_state.get('generator_dir'),
+        g_state.get('templates_dir'),
+        template_name
+    )])
