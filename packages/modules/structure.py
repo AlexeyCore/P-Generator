@@ -38,7 +38,7 @@ def copy_template(path=''):
 
 
 def restructuring():
-    print('Copying template structure')
+    print('Copying template structure...')
     projects_path = g_state.get('projects_path')
     generator_dir = g_state.get('generator_dir')
     packages_dir = g_state.get('packages_dir')
