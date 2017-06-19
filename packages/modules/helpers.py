@@ -35,6 +35,7 @@ def run_py(script_path=''):
 
 
 def init_template_scripts(template_name=''):
+    print('Running template scripts...')
     run_py('%s/%s/%s/%s/%s/index.py' % (
         g_state.get('projects_path'),
         g_state.get('generator_dir'),

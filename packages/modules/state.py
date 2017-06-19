@@ -4,9 +4,11 @@ import os, inspect
 class State:
     state = {
         'name': '',
+        'template': '',
         'generator_dir': 'P-Generator',
         'packages_dir': 'packages',
         'templates_dir': 'templates',
+        'template_tree_dir': 'g_tree',
         'projects_path': ''
     }
 
