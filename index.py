@@ -1,7 +1,10 @@
-import os, sys, inspect
-from modules import helpers, templates
-from modules.state import g_state
+import os
+import sys
 
+from packages.modules import helpers
+from packages.modules.state import g_state
+
+from packages.modules import templates
 
 # Check current directory
 project_dir = g_state.get('projects_path')

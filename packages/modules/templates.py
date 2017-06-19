@@ -1,14 +1,17 @@
 import os
-from modules import constants, git, helpers
-from modules.state import g_state
+
+from packages.modules import constants, git, helpers
+
+from packages.modules.state import g_state
 
 
 def clone_template():
     projects_path = g_state.get('projects_path')
+    packages_dir = g_state.get('packages_dir')
     generator_dir = g_state.get('generator_dir')
     templates_dir = g_state.get('templates_dir')
     selected_tm = g_state.get('template')
-    template_path = '%s/%s/%s/%s/index.py' % (projects_path, generator_dir, templates_dir, selected_tm)
+    template_path = '%s/%s/%s/%s/%s/index.py' % (projects_path, generator_dir, packages_dir, templates_dir, selected_tm)
     tm = constants.templates[selected_tm]
     clone_available = True
     if not tm:
@@ -27,7 +30,7 @@ def clone_template():
         print('Cloning template repository...')
         cloned = git.clone(
             tm['git_url'],
-            '%s/%s/%s' % (generator_dir, templates_dir, selected_tm)
+            '%s/%s/%s/%s' % (generator_dir, packages_dir, templates_dir, selected_tm)
         )
         if cloned is None:
             print('Failed :(')

@@ -1,5 +1,5 @@
 import os, shutil
-from modules import helpers, constants
+from packages.modules.state import g_state
 
 
 def remove_files(files_and_dirs=['']):
@@ -27,10 +27,14 @@ def mk_dirs(directory_paths=['']):
     return len(errors)
 
 
-# def move(paths=[''], name=''):
-#     for path in paths:
-#         shutil.move(path, '%s/%s' % (constants.paths.projects, name))
+def create_project_dir():
+    os.mkdir('%s/%s' % (g_state.get('projects_path'), g_state.get('name')))
 
 
-# def format(project_structure, name):
-#     print(project_structure)
+def move(paths=['']):
+    for path in paths:
+        shutil.move(path, '%s/%s' % (g_state.get('projects_path'), g_state.get('name')))
+
+
+def make_project_structure(structure={}):
+    print('Initializing the template structure')
