@@ -1,3 +1,4 @@
-from ...modules import git
+from packages.modules import git
+
 
 print('ssd', git)

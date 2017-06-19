@@ -31,11 +31,12 @@ def ask_question(question='', options=[]):
 
 
 def run_py(script_path=''):
-    run_command(['python3 %s' % script_path])
+    exec(open(script_path).read())
 
 
 def init_template_scripts(template_name=''):
-    run_py('%s/%s/%s/%s/index.py' % (
+    run_py('%s/%s/%s/%s/%s/index.py' % (
+        g_state.get('projects_path'),
         g_state.get('generator_dir'),
         g_state.get('packages_dir'),
         g_state.get('templates_dir'),
