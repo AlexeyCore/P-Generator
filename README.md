@@ -1,5 +1,1 @@
-## Installation
-
-Comming soon
-
-## License
+## Comming soon
